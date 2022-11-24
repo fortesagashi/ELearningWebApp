@@ -18,10 +18,12 @@ return new class extends Migration
             $table->string('subject_name');
             $table->integer('study_year');
             $table->string('class_identifier');
-            $table->string('country');
-            $table->string('school');
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->foreign('country_id')->references('id')->on('countries');
             $table->unsignedBigInteger('teacher_id');
             $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->unsignedBigInteger('school_id')->nullable();
+            $table->foreign('school_id')->references('id')->on('schools');
             $table->timestamps();
         });
     }

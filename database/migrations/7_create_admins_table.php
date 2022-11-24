@@ -13,26 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('students', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('lastname');
-            $table->integer('student_id');
-            $table->integer('personal_id');
+            $table->integer('personal_id')->unique();
             $table->date('date_of_birth');
-            $table->string('gender');
-            $table->string('country');
-            $table->string('city');
-            $table->string('address');
-            $table->integer('zipcode');
-            $table->integer('parent_phone_number');
-            $table->string('school');
-            $table->string('main_teacher');
-            $table->integer('study_year');
-            $table->string('class_identifier');
+            $table->enum('gender', ['F','M']);
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->foreign('country_id')->references('id')->on('countries');
+            $table->bigInteger('phone_number');
+            $table->unsignedBigInteger('school_id')->nullable();
+            $table->foreign('school_id')->references('id')->on('schools');
             $table->string('username')->nullable();
-            $table->string('parent_name')->nullable();
-            $table->string('parent_lastname')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -50,6 +43,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students');
+        Schema::dropIfExists('admins');
     }
 };

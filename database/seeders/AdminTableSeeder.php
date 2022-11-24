@@ -24,11 +24,8 @@ class AdminTableSeeder extends Seeder
                 'date_of_birth' => '1999-07-15',
                 'gender' => 'F',
                 'country' => 'Kosove',
-                'city' => 'Suhareke',
-                'address' => 'dwgwegds',
-                'zipcode' => '23000',
+                'school_id' => '1',
                 'phone_number' => '00383111111',
-                'school' => 'Jeta e Re',
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('111'),
                 'status' => 'active'
