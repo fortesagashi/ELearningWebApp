@@ -18,7 +18,7 @@ class SchoolTableSeeder extends Seeder
     {
         DB::table('schools')->insert([
             'school_name' => 'Jeta e Re',
-            'country' => 'Kosove',
+            'country_id' => '1',
 
     ]);
     }

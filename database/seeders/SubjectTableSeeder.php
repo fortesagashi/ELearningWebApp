@@ -20,7 +20,7 @@ class SubjectTableSeeder extends Seeder
             'subject_name' => 'Gjeografi',
             'study_year' => '8',
             'class_identifier' => '2',
-            'country' => 'Kosove',
+            'country_id' => '1',
             'school_id' => '1',
             'teacher_id' => '1',
 

@@ -24,7 +24,7 @@ class StudentTableSeeder extends Seeder
             'student_id' => '23',
             'date_of_birth' => '1999-07-15',
             'gender' => 'F',
-            'country' => 'Kosove',
+            'country_id' => '1',
             'parent_phone_number' => '00383111111',
             'school_id' => '1',
             'study_year' => '8',

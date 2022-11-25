@@ -23,7 +23,7 @@ class TeacherTableSeeder extends Seeder
             'personal_id' => '1234567',
             'date_of_birth' => '1999-07-15',
             'gender' => 'M',
-            'country' => 'Kosove',
+            'country_id' => '1',
             'phone_number' => '003831111112',
             'school_id' => '1',
             'email' => 'miftar@gmail.com',

@@ -33,5 +33,6 @@ class Authenticated
     {
         $this->user = $user;
         $this->guard = $guard;
+
     }
 }
