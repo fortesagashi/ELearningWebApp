@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Admin Route
+Route::prefix('admin')->group(function (){
+    Route::get('/login', [AdminController::class, 'Index'])->name('login_form');
+    Route::post('/login/owner', [AdminController::class, 'Login'])->name('admin.login');
+//middleware('admin) helps not to access /dashboard page without logging in
+    Route::get('/dashboard', [AdminController::class, 'Dashboard'])->name('admin.dashboard')->middleware('admin');
+    Route::get('/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
+
+});
+//End Admin Route
 
 Route::get('/', function () {
     return view('welcome');
