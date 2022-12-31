@@ -9,7 +9,10 @@ class Teacher extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-
+    public function subjects()
+    {
+        return $this->belongsToMany(Teacher::class, 'teachers_subjects', 'teacher_id', 'subject_id');
+    }
     /**
      * The attributes that are mass assignable.
      *

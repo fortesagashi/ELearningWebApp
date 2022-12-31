@@ -31,4 +31,8 @@ class AdminController extends Controller
 
 
     }//end method
+
+    public function AdminRegister(){
+        return view('admin.admin_register');
+    }//end method
 }

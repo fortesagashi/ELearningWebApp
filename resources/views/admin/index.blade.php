@@ -8,3 +8,4 @@
 <h4>Përshëndetje {{ Auth::guard('admin')->user()->name}}</h4>
 <a href="{{route('admin.logout')}}">Shkyqu</a>
 @endsection
+

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+// use App\Http\Controllers\DropdownController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,12 @@ Route::prefix('admin')->group(function (){
 
 });
 //End Admin Route
+// Route::prefix('dropdown')->group(function (){
+
+//     Route::get('/data', [DropdownController::class, 'Index']);
+//     Route::post('/school', [DropdownController::class, 'FetchSchool'])->name('fetch.school');
+//     Route::post('/country', [DropdownController::class, 'FetchCountry'])->name('fetch.country');
+// });
 
 Route::get('/', function () {
     return view('welcome');
