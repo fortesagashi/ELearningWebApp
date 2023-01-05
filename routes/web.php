@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 // use App\Http\Controllers\DropdownController;
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,27 @@ Route::prefix('admin')->group(function (){
 //     Route::post('/school', [DropdownController::class, 'FetchSchool'])->name('fetch.school');
 //     Route::post('/country', [DropdownController::class, 'FetchCountry'])->name('fetch.country');
 // });
+
+//Teacher Route
+Route::prefix('teacher')->group(function (){
+    Route::get('/login', [TeacherController::class, 'Index'])->name('login_form');
+    Route::post('/login/owner', [TeacherController::class, 'Login'])->name('teacher.login');
+//middleware('teacher) helps not to access /dashboard page without logging in
+    Route::get('/dashboard', [TeacherController::class, 'Dashboard'])->name('teacher.dashboard')->middleware('teacher');
+    Route::get('/logout', [TeacherController::class, 'TeacherLogout'])->name('teacher.logout')->middleware('teacher');
+
+});
+//End Teacher Route
+//Student Route
+Route::prefix('student')->group(function (){
+    Route::get('/login', [StudentController::class, 'Index'])->name('login_form');
+    Route::post('/login/owner', [StudentController::class, 'Login'])->name('student.login');
+//middleware('student) helps not to access /dashboard page without logging in
+    Route::get('/dashboard', [StudentController::class, 'Dashboard'])->name('student.dashboard')->middleware('student');
+    Route::get('/logout', [StudentController::class, 'StudentLogout'])->name('student.logout')->middleware('student');
+
+});
+//End Student Route
 
 Route::get('/', function () {
     return view('welcome');
