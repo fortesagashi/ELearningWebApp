@@ -19,7 +19,7 @@ class Teacher
     {
 
         if (!Auth::guard('teacher')->check()) {
-            return redirect()->route('login_form')->with('error', 'Ju lutem kyquni fillimisht!');
+            return redirect()->route('teacher_login_form')->with('error', 'Ju lutem kyquni fillimisht!');
         }
 
         return $next($request);

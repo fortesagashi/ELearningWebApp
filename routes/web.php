@@ -19,12 +19,16 @@ use App\Http\Controllers\TeacherController;
 
 //Admin Route
 Route::prefix('admin')->group(function (){
-    Route::get('/login', [AdminController::class, 'Index'])->name('login_form');
+    Route::get('/login', [AdminController::class, 'Index'])->name('admin_login_form');
     Route::post('/login/owner', [AdminController::class, 'Login'])->name('admin.login');
 //middleware('admin) helps not to access /dashboard page without logging in
     Route::get('/dashboard', [AdminController::class, 'Dashboard'])->name('admin.dashboard')->middleware('admin');
     Route::get('/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
-
+    Route::get('/admin/profile', [AdminController::class,'Profile'])->name('admin.profile');
+    Route::get('/edit/profile', [AdminController::class,'EditProfile'])->name('edit.profile');
+    Route::post('/store/profile', [AdminController::class,'StoreProfile'])->name('store.profile');
+    Route::get('/change/password',  [AdminController::class,'ChangePassword'])->name('change.password');
+    Route::post('/update/password',  [AdminController::class,'UpdatePassword'])->name('update.password');
 });
 //End Admin Route
 // Route::prefix('dropdown')->group(function (){
@@ -36,17 +40,21 @@ Route::prefix('admin')->group(function (){
 
 //Teacher Route
 Route::prefix('teacher')->group(function (){
-    Route::get('/login', [TeacherController::class, 'Index'])->name('login_form');
+    Route::get('/login', [TeacherController::class, 'Index'])->name('teacher_login_form');
     Route::post('/login/owner', [TeacherController::class, 'Login'])->name('teacher.login');
 //middleware('teacher) helps not to access /dashboard page without logging in
     Route::get('/dashboard', [TeacherController::class, 'Dashboard'])->name('teacher.dashboard')->middleware('teacher');
     Route::get('/logout', [TeacherController::class, 'TeacherLogout'])->name('teacher.logout')->middleware('teacher');
-
+    Route::get('/teacher/profile', [TeacherController::class,'Profile'])->name('teacher.profile');
+    Route::get('/edit/profile', [TeacherController::class,'EditProfile'])->name('edit.profile');
+    Route::post('/store/profile', [TeacherController::class,'StoreProfile'])->name('store.profile');
+    Route::get('/change/password',  [TeacherController::class,'ChangePassword'])->name('change.password');
+    Route::post('/update/password',  [TeacherController::class,'UpdatePassword'])->name('update.password');
 });
 //End Teacher Route
 //Student Route
 Route::prefix('student')->group(function (){
-    Route::get('/login', [StudentController::class, 'Index'])->name('login_form');
+    Route::get('/login', [StudentController::class, 'Index'])->name('student_login_form');
     Route::post('/login/owner', [StudentController::class, 'Login'])->name('student.login');
 //middleware('student) helps not to access /dashboard page without logging in
     Route::get('/dashboard', [StudentController::class, 'Dashboard'])->name('student.dashboard')->middleware('student');

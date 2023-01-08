@@ -52,8 +52,6 @@
                 <x-primary-button class="ml-3">
                     {{ __('Log in') }}
                 </x-primary-button>
-                <a class="inline-flex items-center" href="{{route('teacher.register')}}">{{ __('Create new account') }}</a>
-
             </div>
         </form>
     </x-auth-card>

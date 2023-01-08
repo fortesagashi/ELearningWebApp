@@ -27,12 +27,12 @@ class StudentController extends Controller
     public function StudentLogout(){
 
         Auth::guard('student')->logout();
-        return redirect()->route('login_form')->with('error', 'Jeni shkyqur me sukses!');
+        return redirect()->route('student_login_form')->with('error', 'Jeni shkyqur me sukses!');
 
 
     }//end method
 
-    public function StudentRegister(){
-        return view('student.student_register');
-    }//end method
+    // public function StudentRegister(){
+    //     return view('student.student_register');
+    // }//end method
 }

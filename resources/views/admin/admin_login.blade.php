@@ -1,60 +1,124 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<!doctype html>
+<html lang="en">
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+    <head>
 
-        @if(Session::has('error'))
-        <strong> {{ session::get('error') }}</strong>
+        <meta charset="utf-8" />
+        <title>Qendra Burimore për Mësim dhe Këshillim "Xheladin Deda"</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesdesign" name="author" />
+        <!-- App favicon -->
+        <link rel="icon" type="image/x-icon" href="{{ asset('backend/assets/images/logo-light.png')}}">
+
+        <!-- Bootstrap Css -->
+        <link href="{{ asset('backend/assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="{{ asset('backend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{{ asset('backend/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+        <!-- Toastr Css -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}" >
+    </head>
+
+    <body class="auth-body-bg">
+        <div class="bg-overlay"></div>
+        <div class="wrapper-page">
+            <div class="container-fluid p-0">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="text-center mt-4">
+                            <div class="mb-3">
+                                <a href="index.html" class="auth-logo">
+                                    <img src="{{ asset('backend/assets/images/logo-dark.png')}}" height="70" class="logo-dark mx-auto" alt="">
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div class="p-1">
+                            <form method="POST" id="myForm" class="form-horizontal mt-3" action="{{ route('admin.login') }}">
+                            @csrf
+
+                                <h5 class="text-muted text-center font-size-18">Qendra Burimore për Mësim dhe Këshillim “Xheladin Deda”</h5><br>
+                                <div class="form-group mb-3 row">
+
+                                    <div class="col-12">
+                                        <input class="form-control" id="email" type="text" name="email" required="" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                <br>
+                                <div class="col-12">
+                                        <input class="form-control form-control:focus" id="password" type="password" name="password" required="" placeholder="Fjalëkalimi">
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3 row">
+                                    <div class="col-12">
+                                        <div class="custom-control custom-checkbox">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-1 text-center row mt-1 pt-1">
+                                    <div class="col-12">
+                                        <button class="btn btn-info w-100 waves-effect waves-light" type="submit">Kyçu</button>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-1 text-center row mt-1 pt-1">
+                                    <div class="col-12">
+                                        <a href="{{ route('password.request') }}" class="btn btn-info w-100 waves-effect waves-light">Ndrysho fjalëkalimin</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- end -->
+                    </div>
+                    <!-- end cardbody -->
+                </div>
+                <!-- end card -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end -->
+
+        <!-- JAVASCRIPT -->
+        <script src="{{ asset('backend/assets/libs/jquery/jquery.min.js')}}"></script>
+        <script src="{{ asset('backend/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{ asset('backend/assets/libs/metismenu/metisMenu.min.js')}}"></script>
+        <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js')}}"></script>
+        <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js')}}"></script>
+
+        <script src="{{ asset('backend/assets/js/app.js')}}"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+        <script>
+        @if(Session::has('message'))
+        var type = "{{ Session::get('alert-type','info') }}"
+        switch(type){
+            case 'info':
+            toastr.info(" {{ Session::get('message') }} ");
+            break;
+
+            case 'success':
+            toastr.success(" {{ Session::get('message') }} ");
+            break;
+
+            case 'warning':
+            toastr.warning(" {{ Session::get('message') }} ");
+            break;
+
+            case 'error':
+            toastr.error(" {{ Session::get('message') }} ");
+            break;
+        }
         @endif
-        <form method="POST" action="{{ route('admin.login') }}">
-            @csrf
+        </script>
 
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
-
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-primary-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-primary-button>
-                <a class="inline-flex items-center" href="{{route('admin.register')}}">{{ __('Create new account') }}</a>
-
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+    </body>
+</html>
