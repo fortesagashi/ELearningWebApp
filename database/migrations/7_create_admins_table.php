@@ -20,11 +20,7 @@ return new class extends Migration
             $table->integer('personal_id')->unique();
             $table->date('date_of_birth');
             $table->enum('gender', ['F','M']);
-            $table->unsignedBigInteger('country_id')->nullable();
-            $table->foreign('country_id')->references('id')->on('countries');
             $table->bigInteger('phone_number');
-            $table->unsignedBigInteger('school_id')->nullable();
-            $table->foreign('school_id')->references('id')->on('schools');
             $table->string('username')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

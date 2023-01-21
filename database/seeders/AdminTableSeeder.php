@@ -23,8 +23,6 @@ class AdminTableSeeder extends Seeder
                 'personal_id' => '123456',
                 'date_of_birth' => '1999-07-15',
                 'gender' => 'F',
-                'country_id' => '1',
-                'school_id' => '1',
                 'phone_number' => '00383111111',
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('111'),

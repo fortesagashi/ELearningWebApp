@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('subject_name');
             $table->integer('study_year');
-            $table->unsignedBigInteger('school_id')->nullable();
-            $table->foreign('school_id')->references('id')->on('schools');
             $table->timestamps();
         });
     }

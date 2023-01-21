@@ -64,7 +64,7 @@ Route::prefix('student')->group(function (){
 //End Student Route
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('student.student_login');
 });
 
 Route::get('/dashboard', function () {

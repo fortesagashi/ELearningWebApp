@@ -21,11 +21,7 @@ return new class extends Migration
             $table->bigInteger('personal_id')->unique();
             $table->date('date_of_birth');
             $table->enum('gender', ['F','M']);
-            $table->unsignedBigInteger('country_id')->nullable();
-            $table->foreign('country_id')->references('id')->on('countries');
             $table->bigInteger('parent_phone_number');
-            $table->unsignedBigInteger('school_id')->nullable();
-            $table->foreign('school_id')->references('id')->on('schools');
             $table->integer('study_year');
             $table->string('class_identifier');
             $table->string('username')->nullable();
