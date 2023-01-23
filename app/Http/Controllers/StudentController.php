@@ -11,6 +11,7 @@ class StudentController extends Controller
         return view('student.student_login');
     }//end method
 
+
     public function Dashboard(){
         return view('student.index');
     }//end method

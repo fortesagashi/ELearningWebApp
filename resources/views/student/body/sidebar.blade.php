@@ -1,54 +1,72 @@
-<div class="vertical-menu">
+<aside id="sidebar" class="sidebar">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <ul class="sidebar-nav" id="sidebar-nav">
 
-<div data-simplebar class="h-100">
+            @php
+                $id = Auth::guard('student')->user()->id;
+                $studentData = App\Models\Student::find($id);
 
-    <!-- User details -->
+                $subjects = App\Models\Subjects::join('students as st', function($join) use ($studentData) {
+                    $join->on('subjects.study_year', '=', 'st.study_year');
+                })->get();
+
+                $subjectIds = App\Models\Subjects::join('students as st', function($join) use ($studentData) {
+                    $join->on('subjects.study_year', '=', 'st.study_year');
+                })->pluck('subjects.id');
+
+                foreach($subjects as $index => $subject){
+                    $name = $subject->subject_name;
+                    $subjectId = $subjectIds[$index];
+                }
+                foreach($subjectIds as $subjectId) {
+                    $subjectId;
+                }
 
 
-    <!--- Sidemenu -->
-    <div id="sidebar-menu">
-        <!-- Left Menu Start -->
-        <ul class="metismenu list-unstyled" id="side-menu">
-            <!-- <li class="menu-title">Lëndët</li> -->
+            @endphp
 
 
-
-
-            <li>
-                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                    <i class="ri-profile-line"></i>
-                    <span>Studentët</span>
+            <!-- @foreach ($subjects as $index => $subject)
+                <a class="nav-link nav-button collapsed" data-id="{{ $subject->id }}" data-bs-target="#forms-nav-{{$subject->id}}" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-journal-text"></i>
+                    <span>{{ $subjectIds[$index]}}</span>
+                    <span>{{ $subject->subject_name }}</span>
                 </a>
-                <!-- <ul class="sub-menu" aria-expanded="false">
+            @endforeach -->
 
-                </ul> -->
-            </li>
-            <li>
-                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                    <i class="ri-profile-line"></i>
-                    <span>Mësuesit</span>
-                </a>
-                <!-- <ul class="sub-menu" aria-expanded="false">
+            @foreach ($subjects as $index => $subject)
 
-                </ul> -->
-            </li>
-            <li>
-                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                    <i class="ri-profile-line"></i>
-                    <span>Lëndët</span>
-                </a>
-                <!-- <ul class="sub-menu" aria-expanded="false">
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#index-{{ $subjectIds[$index]}}" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>{{ $subject->subject_name }}</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+                <ul id="index-{{ $subjectIds[$index]}}" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                @php
+                $chapters = App\Models\Chapter::select('chapter_name')
+                ->join('books', 'books.id', '=', 'chapters.book_id')
+                ->join('subjects', 'subjects.id', '=', 'books.subject_id')
+                ->where('subjects.id', $subjectIds[$index])
+                ->where('books.book_name', 'Student')
+                ->pluck('chapter_name');
 
-                </ul> -->
-            </li>
+                @endphp
+                @foreach ($chapters as $chapter)
+                    <li> <a href="{{ route('student.dashboard') }}"> <i class="bi bi-circle"></i><span>{{$chapter}}</span> </a></li>
+                @endforeach
+                </ul>
+            </a>
+        </li>
+    @endforeach
 
-
-
-
-
-            <li class="menu-title">Pages</li>
-        </ul>
-    </div>
-    <!-- Sidebar -->
-</div>
-</div>
+        </li>
+    </ul>
+</aside>
+<script>
+  document.querySelectorAll('.nav-link').forEach(function(element) {
+    element.addEventListener('click', function() {
+      document.querySelectorAll('.nav-link').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      this.classList.add('active');
+    });
+  });
+</script>

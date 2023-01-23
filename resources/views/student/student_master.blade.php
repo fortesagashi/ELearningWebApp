@@ -1,30 +1,39 @@
-
-<h4>Faqja Student</h4>
+<!DOCTYPE html>
+<html lang="en">
 @yield('student')
-<head>
+@include('student.body.header')
+@include('student.body.sidebar')
 
-        <meta charset="utf-8">
-        <title>Dropdowns </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin &amp; Dashboard Template" name="description">
-        <meta content="Themesdesign" name="author">
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
-
-        <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
-        <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
-        <!-- App Css-->
-        <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    </head>
-    <script src="assets/libs/jquery/jquery.min.js"></script>
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
-    <script src="assets/js/app.js"></script>
+   <head>
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <title>Dashboard - Admin Bootstrap Template</title>
+      <meta name="robots" content="noindex, nofollow">
+      <meta content="" name="description">
+      <meta content="" name="keywords">
+      <link href="{{ asset('student/assets/img/favicon.png')}}" rel="icon">
+      <link href="{{ asset('student/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+      <link href="https://fonts.gstatic.com" rel="preconnect">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      <link href="{{ asset('student/assets/css/bootstrap.min.css')}}" rel="stylesheet">
+      <link href="{{ asset('student/assets/css/bootstrap-icons.css')}}" rel="stylesheet">
+      <link href="{{ asset('student/assets/css/boxicons.min.css')}}" rel="stylesheet">
+      <link href="{{ asset('student/assets/css/quill.snow.css')}}" rel="stylesheet">
+      <link href="{{ asset('student/assets/css/quill.bubble.css')}}" rel="stylesheet">
+      <link href="{{ asset('student/assets/css/remixicon.css')}}" rel="stylesheet">
+      <link href="{{ asset('student/assets/css/simple-datatables.css')}}" rel="stylesheet">
+      <link href="{{ asset('student/assets/css/style.css')}}" rel="stylesheet">
+   </head>
+   <body>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+        <script src="{{ asset('student/assets/js/apexcharts.min.js')}}"></script>
+        <script src="{{ asset('student/assets/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{ asset('student/assets/js/chart.min.js')}}"></script>
+        <script src="{{ asset('student/assets/js/echarts.min.js')}}"></script>
+        <script src="{{ asset('student/assets/js/quill.min.js')}}"></script>
+        <script src="{{ asset('student/assets/js/simple-datatables.js')}}"></script>
+        <script src="{{ asset('student/assets/js/tinymce.min.js')}}"></script>
+        <script src="{{ asset('student/assets/js/validate.js')}}"></script>
+        <script src="{{ asset('student/assets/js/main.js')}}"></script>
+   </body>
+</html>
