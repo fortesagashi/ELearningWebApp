@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectsController;
+use App\Http\Controllers\BookController;
 // use App\Http\Controllers\DropdownController;
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +61,7 @@ Route::prefix('student')->group(function (){
 //middleware('student) helps not to access /dashboard page without logging in
     Route::get('/dashboard', [StudentController::class, 'Dashboard'])->name('student.dashboard')->middleware('student');
     Route::get('/logout', [StudentController::class, 'StudentLogout'])->name('student.logout')->middleware('student');
-
+    Route::get('/dashboard/chapter', [BookController::class, 'Dashboard'])->name('content.dashboard');
 });
 //End Student Route
 

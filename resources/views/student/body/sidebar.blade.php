@@ -38,19 +38,26 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#index-{{ $subjectIds[$index]}}" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>{{ $subject->subject_name }}</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+                <i class="bi bi-journal-text"></i><span>{{ $subject->subject_name }}</span><i class="bi bi-chevron-down ms-auto"></i> </a>
                 <ul id="index-{{ $subjectIds[$index]}}" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 @php
-                $chapters = App\Models\Chapter::select('chapter_name')
+                $chapters = App\Models\Chapter::select('chapter_name', 'chapters.id as chapter_id', 'chapters.content as chapter_content')
                 ->join('books', 'books.id', '=', 'chapters.book_id')
                 ->join('subjects', 'subjects.id', '=', 'books.subject_id')
                 ->where('subjects.id', $subjectIds[$index])
                 ->where('books.book_name', 'Student')
-                ->pluck('chapter_name');
+                ->get();
+
+
 
                 @endphp
                 @foreach ($chapters as $chapter)
-                    <li> <a href="{{ route('student.dashboard') }}"> <i class="bi bi-circle"></i><span>{{$chapter}}</span> </a></li>
+                    <li> <a href="{{ route('content.dashboard') }}?chapter_name={{ $chapter->chapter_name }}&chapter_id={{$chapter->chapter_id}}&chapter_content={{$chapter->chapter_content}}">
+
+
+                        <i class="bi bi-circle"></i>
+                        <span>{{$chapter->chapter_name}}</span>
+                    </a></li>
                 @endforeach
                 </ul>
             </a>

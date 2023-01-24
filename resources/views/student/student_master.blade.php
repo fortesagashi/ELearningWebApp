@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @yield('student')
+@yield('chapter_content')
 @include('student.body.header')
 @include('student.body.sidebar')
 
