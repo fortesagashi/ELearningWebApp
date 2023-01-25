@@ -1,7 +1,6 @@
 @extends('student.student_master')
 @section('student')
 
-<p>Faqja Index</p>
 @if(Session::has('error'))
     <strong> {{ session::get('error') }}</strong>
 @endif

@@ -61,7 +61,8 @@ Route::prefix('student')->group(function (){
 //middleware('student) helps not to access /dashboard page without logging in
     Route::get('/dashboard', [StudentController::class, 'Dashboard'])->name('student.dashboard')->middleware('student');
     Route::get('/logout', [StudentController::class, 'StudentLogout'])->name('student.logout')->middleware('student');
-    Route::get('/dashboard/chapter', [BookController::class, 'Dashboard'])->name('content.dashboard');
+    Route::get('/dashboard/chapter/{id}/{subjectID}', [BookController::class, 'Dashboard'])->name('content.dashboard');
+    Route::post('/dashboard/updatechapter/{id}/{subjectID}', [BookController::class, 'UpdateChapter'])->name('update.chapter');
 });
 //End Student Route
 

@@ -48,14 +48,14 @@
                 ->where('books.book_name', 'Student')
                 ->get();
 
+                $subjectID = $subjectIds[$index];
 
 
                 @endphp
                 @foreach ($chapters as $chapter)
-                    <li> <a href="{{ route('content.dashboard') }}?chapter_name={{ $chapter->chapter_name }}&chapter_id={{$chapter->chapter_id}}&chapter_content={{$chapter->chapter_content}}">
+                    <li> <a href="{{ route('content.dashboard', ['id' => $chapter->chapter_id, 'subjectID' => $subjectID]) }}" id="{{$chapter->chapter_id}}">
 
-
-                        <i class="bi bi-circle"></i>
+                         <i class="bi bi-circle"></i>
                         <span>{{$chapter->chapter_name}}</span>
                     </a></li>
                 @endforeach
@@ -68,12 +68,30 @@
     </ul>
 </aside>
 <script>
-  document.querySelectorAll('.nav-link').forEach(function(element) {
-    element.addEventListener('click', function() {
-      document.querySelectorAll('.nav-link').forEach(function(el) {
-        el.classList.remove('active');
-      });
-      this.classList.add('active');
+  // Select all the links
+  var links = document.querySelectorAll('.nav-link');
+
+  // Add an event listener to each link
+  links.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      // Get the ID of the clicked link
+      var chapterId = event.target.id;
+
+      // Send an AJAX request to the server with the ID
+      fetch('/content/'+ chapterId, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+          // Update the DOM with the content here
+          //for example
+          document.getElementById("chapter-content").innerHTML = data;
+      })
+      .catch(error => console.log(error))
     });
   });
 </script>
+
