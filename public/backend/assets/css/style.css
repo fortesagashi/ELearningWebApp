@@ -29,19 +29,15 @@
   # Main
   --------------------------------------------------------------*/
   #main {
-	padding-top: 40px;
+	margin-top: 60px;
+	padding: 20px 30px;
 	transition: all 0.3s;
   }
   @media (max-width: 1199px) {
 	#main {
-	  padding-top: 20px;
+	  padding: 20px;
 	}
   }
-  #main > div {
-    position: relative;
-    min-height: 100%;
-    padding-top: 10px;
-}
 
   /*--------------------------------------------------------------
   # Page Title
@@ -1053,33 +1049,14 @@
 	}
   }
 
-
-  .waves-effect {
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-    overflow: hidden;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-
   /*--------------------------------------------------------------
   # Footer
   --------------------------------------------------------------*/
-
   .footer {
-    bottom:0;
-    padding: 20px calc(24px / 2);
-    font-size: 14px;
-    color: #6c757d;
-    right: 240px;
-    height: 60px;
-    -webkit-box-shadow: -1px 0px 20px rgba(0, 0, 0, 0.05);
-            box-shadow: -1px 0px 20px rgba(0, 0, 0, 0.05);
-    background-color: #fff;
+	padding: 20px 0;
+	font-size: 14px;
+	transition: all 0.3s;
+	border-top: 1px solid #cddfff;
   }
   .footer .copyright {
 	text-align: center;

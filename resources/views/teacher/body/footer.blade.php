@@ -1,4 +1,5 @@
-<footer class="footer">
+<footer class="footer" style="position: relative;
+    bottom: 0;">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">

@@ -16,7 +16,7 @@
                         <hr>
                         <h4 class="card-title">Emri i përdoruesit : {{$teacherData->username}}</h4>
                         <hr>
-                        <a href="{{route('edit.profile')}}" class="btn btn-info btn-rounded waves-effect waves-light">Ndrysho të dhënat</a>
+                        <a href="{{route('teacher.edit.profile')}}" class="btn btn-info btn-rounded waves-effect waves-light">Ndrysho të dhënat</a>
                     </div>
                 </div>
             </div>

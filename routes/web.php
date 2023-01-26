@@ -48,8 +48,8 @@ Route::prefix('teacher')->group(function (){
     Route::get('/dashboard', [TeacherController::class, 'Dashboard'])->name('teacher.dashboard')->middleware('teacher');
     Route::get('/logout', [TeacherController::class, 'TeacherLogout'])->name('teacher.logout')->middleware('teacher');
     Route::get('/teacher/profile', [TeacherController::class,'Profile'])->name('teacher.profile');
-    Route::get('/edit/profile', [TeacherController::class,'EditProfile'])->name('edit.profile');
-    Route::post('/store/profile', [TeacherController::class,'StoreProfile'])->name('store.profile');
+    Route::get('/edit/profile', [TeacherController::class,'EditProfile'])->name('teacher.edit.profile');
+    Route::post('/store/profile', [TeacherController::class,'StoreProfile'])->name('teacher.store.profile');
     Route::get('/change/password',  [TeacherController::class,'ChangePassword'])->name('change.password');
     Route::post('/update/password',  [TeacherController::class,'UpdatePassword'])->name('update.password');
 });
@@ -58,6 +58,9 @@ Route::prefix('teacher')->group(function (){
 Route::prefix('student')->group(function (){
     Route::get('/login', [StudentController::class, 'Index'])->name('student_login_form');
     Route::post('/login/owner', [StudentController::class, 'Login'])->name('student.login');
+    Route::get('/profile', [StudentController::class,'Profile'])->name('student.profile');
+    Route::get('/edit/profile', [StudentController::class,'EditProfile'])->name('student.edit.profile');
+    Route::post('/store/profile', [StudentController::class,'StoreProfile'])->name('student.store.profile');
 //middleware('student) helps not to access /dashboard page without logging in
     Route::get('/dashboard', [StudentController::class, 'Dashboard'])->name('student.dashboard')->middleware('student');
     Route::get('/logout', [StudentController::class, 'StudentLogout'])->name('student.logout')->middleware('student');

@@ -1,12 +1,10 @@
 
 @extends('student.student_master')
 @section('chapter_content')
-<p>Faqja Index</p>
 @if(Session::has('error'))
     <strong> {{ session::get('error') }}</strong>
 @endif
 
-<main id="main" class="main">
     <div class="pagetitle">
             <h1><a href="#">{{$name}}</a></h1>
             <nav>
@@ -44,7 +42,7 @@
 
             </div>
     </div>
-</main>
+
 
 @endsection
 

@@ -1,5 +1,7 @@
+<main id="main" class="main">
 <aside id="sidebar" class="sidebar">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="{{ asset('student/assets/js/main.js')}}"></script>
         <ul class="sidebar-nav" id="sidebar-nav">
 
             @php
@@ -66,7 +68,8 @@
 
         </li>
     </ul>
-</aside>
+            </aside>
+            </main>
 <script>
   // Select all the links
   var links = document.querySelectorAll('.nav-link');
@@ -93,5 +96,5 @@
       .catch(error => console.log(error))
     });
   });
-</script>
 
+</script>

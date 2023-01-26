@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
+Use Illuminate\Support\Facades\Hash;
 use Auth;
 
 class StudentController extends Controller
@@ -32,8 +34,43 @@ class StudentController extends Controller
 
 
     }//end method
+    public function Profile(){
+        $id = Auth::guard('student')->user()->id;
+        //The User Model we access our database
+        $studentData = Student::find($id);
+        return view('student.student_profile_view', compact('studentData'));
 
-    // public function StudentRegister(){
-    //     return view('student.student_register');
-    // }//end method
+    } //end method
+
+    public function EditProfile(){
+        $id = Auth::guard('student')->user()->id;
+        //The User Model we access our database
+        $editData = Student::find($id);
+        return view('student.student_profile_edit', compact('editData'));
+
+    }//end method
+
+    public function StoreProfile(Request $request){
+        $id = Auth::guard('student')->user()->id;
+        $data = Student::find($id);
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->username = $request->username;
+
+        if ($request->file('photo')) {
+           $file = $request->file('photo');
+           @unlink(public_path('upload/student_images/'.$data->photo));
+           $filename = date('YmdHi').$file->getClientOriginalName();
+           $file->move(public_path('upload/student_images'),$filename);
+           $data['photo'] = $filename;
+        }
+        $data->save();
+
+        $notification = array(
+            'message' => 'Profili u ndryshua me sukses!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('student.profile')->with($notification);
+    }//end method
+
 }
