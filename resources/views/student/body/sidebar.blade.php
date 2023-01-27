@@ -6,7 +6,7 @@
 
             @php
                 $id = Auth::guard('student')->user()->id;
-                $studentData = App\Models\Student::find($id);
+                $studentData = App\Models\Student::where('id', $id)->first();
 
                 $subjects = App\Models\Subjects::join('students as st', function($join) use ($studentData) {
                     $join->on('subjects.study_year', '=', 'st.study_year');
@@ -43,12 +43,14 @@
                 <i class="bi bi-journal-text"></i><span>{{ $subject->subject_name }}</span><i class="bi bi-chevron-down ms-auto"></i> </a>
                 <ul id="index-{{ $subjectIds[$index]}}" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 @php
-                $chapters = App\Models\Chapter::select('chapter_name', 'chapters.id as chapter_id', 'chapters.content as chapter_content')
+                $chapters = App\Models\Chapter::select('chapter_name', 'chapters.id as chapter_id', 'chapters.content as chapter_content', 'chapter_number')
                 ->join('books', 'books.id', '=', 'chapters.book_id')
                 ->join('subjects', 'subjects.id', '=', 'books.subject_id')
                 ->where('subjects.id', $subjectIds[$index])
                 ->where('books.book_name', 'Student')
+                ->orderBy('chapter_number', 'asc')
                 ->get();
+
 
                 $subjectID = $subjectIds[$index];
 

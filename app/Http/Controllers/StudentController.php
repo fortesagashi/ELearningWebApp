@@ -21,7 +21,7 @@ class StudentController extends Controller
     public function Login(Request $request){
         $check = $request->all();
         if (Auth::guard('student')->attempt(['email' => $check['email'], 'password' => $check['password']])) {
-            return redirect()->route('student.dashboard')->with('error', 'Jeni kyqur me sukses!');
+            return redirect()->route('student.dashboard');
         }else{
             return back()->with('error', 'Emaili ose fjalekalimi te pasakte!');
         }

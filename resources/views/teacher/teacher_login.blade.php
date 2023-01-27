@@ -75,6 +75,14 @@
                                         <a href="{{ route('password.request') }}" class="btn btn-info w-100 waves-effect waves-light">Ndrysho fjalëkalimin</a>
                                     </div>
                                 </div>
+                                <div class="form-group mb-0 row mt-2">
+                                    <div class="col-sm-7 mt-3">
+                                        <a href="{{ route('teacher_login_form') }}" class="text-muted"><i class="mdi mdi-account-circle"></i> Kyçu mësues</a>
+                                    </div>
+                                    <div class="col-sm-5 mt-3 ps-4">
+                                        <a href="{{ route('admin_login_form') }}" class="text-muted"><i class="mdi mdi-account-circle"></i> Kyçu administrator</a>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                         <!-- end -->

@@ -1,66 +1,22 @@
-<header id="page-topbar">
-    <div class="navbar-header">
-        <div class="d-flex">
-            <!-- LOGO -->
-            <div class="navbar-brand-box">
-                <a href="index.html" class="logo logo-dark">
-                    <span class="logo-sm">
-                        <img src="{{ asset('backend/assets/images/logo-dark.png')}}" alt="logo-sm" height="22">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="{{ asset('backend/assets/images/logo-dark.png')}}" alt="logo-dark" height="20">
-                    </span>
-                    </a>
-
-                <a href="index.html" class="logo logo-light">
-                    <span class="logo-sm">
-                        <img src="{{ asset('backend/assets/images/logo-light.png')}}" alt="logo-sm-light" height="22">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="{{ asset('backend/assets/images/logo-light.png')}}" alt="logo-light" height="40">
-
-                    </span>
-                </a>
-
-            </div>
-
-            <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
-                <i class="ri-menu-2-line align-middle"></i>
-            </button>
-
-
-
-        </div>
-
-        <div class="d-flex">
-
-
-            <div class="dropdown d-none d-lg-inline-block ms-1">
-
-            </div>
-
-            @php
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-between"> <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{{ asset('student/assets/img/favicon.png')}}" alt=""> <span class="d-none d-lg-block">"Xheladin Deda"</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
+        @php
             $id = Auth::guard('teacher')->user()->id;
             $teacherData = App\Models\Teacher::find($id);
+        @endphp
 
-            @endphp
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+                <a class="nav-link nav-profile d-flex align-items-center pe-2" href="{{route('teacher.profile')}}">
+                <i class="bi bi-person"></i><span class="d-none d-md-block ps-2">Profili</span> </a>
+                <a class="nav-link nav-profile d-flex align-items-center pe-2" href="{{route('teacher.logout')}}">
+                <i class="bi bi-box-arrow-right"></i><span class="d-none d-md-block ps-2">Shkyqu</span> </a>
+                <a class="nav-link nav-profile d-flex align-items-center pe-2" href="#">
+                <img src="{{ (!empty($teacherData->photo))? url('upload/teacher_images/'.$teacherData->photo):url('upload/no_image.png')}}" alt="Profile" class="rounded-circle avatar-xs"> <span class="d-none d-md-block ps-2">{{$teacherData->name}}</span> </a>
 
-            <div class="dropdown d-inline-block user-dropdown">
-                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="{{ (!empty($teacherData->photo))? url('upload/teacher_images/'.$teacherData->photo):url('upload/no_image.png')}}"
-                        alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1">{{$teacherData->name}}</span>
-                    <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end">
-                    <!-- item-->
-                    <a class="dropdown-item" href="{{ route('teacher.profile') }}"><i class="ri-user-line align-middle me-1"></i> Profili</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="{{route('teacher.logout')}}"><i class="ri-shut-down-line align-middle me-1 text-danger"></i> Shkyqu</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
+            </ul>
+        </nav>
 </header>
+

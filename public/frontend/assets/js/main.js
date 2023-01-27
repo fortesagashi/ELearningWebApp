@@ -1,416 +1,3 @@
-(function ($) {
-	"use strict";
-
-/*=============================================
-	=    		 Preloader			      =
-=============================================*/
-function preloader() {
-	$('#preloader').delay(0).fadeOut();
-};
-
-$(window).on('load', function () {
-	preloader();
-	wowAnimation();
-});
-
-
-
-/*=============================================
-	=    		Mobile Menu			      =
-=============================================*/
-//SubMenu Dropdown Toggle
-if ($('.menu__area li.menu-item-has-children ul').length) {
-	$('.menu__area .navigation li.menu-item-has-children').append('<div class="dropdown__btn"><span class="fas fa-angle-down"></span></div>');
-
-}
-
-//Mobile Nav Hide Show
-if ($('.mobile__menu').length) {
-
-	var mobileMenuContent = $('.menu__area .main__menu').html();
-	$('.mobile__menu .menu__box .menu__outer').append(mobileMenuContent);
-
-	//Dropdown Button
-	$('.mobile__menu li.menu-item-has-children .dropdown__btn').on('click', function () {
-		$(this).toggleClass('open');
-		$(this).prev('ul').slideToggle(500);
-	});
-	//Menu Toggle Btn
-	$('.mobile__nav__toggler').on('click', function () {
-		$('body').addClass('mobile-menu-visible');
-	});
-
-	//Menu Toggle Btn
-	$('.menu__backdrop, .mobile__menu .close__btn').on('click', function () {
-		$('body').removeClass('mobile-menu-visible');
-	});
-}
-
-
-
-/*=============================================
-	=     Menu sticky & Scroll to top      =
-=============================================*/
-$(window).on('scroll', function () {
-	var scroll = $(window).scrollTop();
-	if (scroll < 245) {
-		$("#sticky-header").removeClass("sticky-menu");
-		$('.scroll-to-target').removeClass('open');
-
-	} else {
-		$("#sticky-header").addClass("sticky-menu");
-		$('.scroll-to-target').addClass('open');
-	}
-});
-
-
-/*=============================================
-	=    		 Scroll Up  	         =
-=============================================*/
-if ($('.scroll-to-target').length) {
-  $(".scroll-to-target").on('click', function () {
-    var target = $(this).attr('data-target');
-    // animate
-    $('html, body').animate({
-      scrollTop: $(target).offset().top
-    }, 1000);
-
-  });
-}
-
-
-/*=============================================
-	=            Smooth Scroll              =
-=============================================*/
-$(function () {
-	$('a.scroll__link').on('click', function (event) {
-		var $anchor = $(this);
-		$('html, body').stop().animate({
-			scrollTop: $($anchor.attr('href')).offset().top - 40
-		}, 1000);
-		event.preventDefault();
-	});
-});
-
-
-/*=============================================
-	=    		 Tab Switcher		      =
-=============================================*/
-$(".mode__switcher, .switcher__tab__btn").on("click", function () {
-	$(".mode__switcher").toggleClass("active");
-	$('body').toggleClass("active-dark-mode");
-});
-
-
-/*=============================================
-	=    		Brand Active		      =
-=============================================*/
-$('.brand-active').slick({
-	dots: false,
-	infinite: true,
-	speed: 1000,
-	autoplay: true,
-	arrows: false,
-	slidesToShow: 6,
-	slidesToScroll: 2,
-	responsive: [
-		{
-			breakpoint: 1200,
-			settings: {
-				slidesToShow: 5,
-				slidesToScroll: 1,
-				infinite: true,
-			}
-		},
-		{
-			breakpoint: 992,
-			settings: {
-				slidesToShow: 4,
-				slidesToScroll: 1
-			}
-		},
-		{
-			breakpoint: 767,
-			settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1,
-				arrows: false,
-			}
-		},
-		{
-			breakpoint: 575,
-			settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1,
-				arrows: false,
-			}
-		},
-	]
-});
-
-
-/*=============================================
-	=    		Services Active		      =
-=============================================*/
-$('.services__active').slick({
-	dots: false,
-	infinite: true,
-	speed: 1000,
-	autoplay: false,
-	arrows: true,
-	slidesToShow: 4,
-	slidesToScroll: 1,
-	prevArrow: '<button class="slick-prev"><i class="far fa-long-arrow-left"></i></button>',
-	nextArrow: '<button class="slick-next"><i class="far fa-long-arrow-right"></i></button>',
-	appendArrows: ".services__arrow",
-	responsive: [
-		{
-			breakpoint: 1200,
-			settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1,
-				infinite: true,
-			}
-		},
-		{
-			breakpoint: 992,
-			settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1
-			}
-		},
-		{
-			breakpoint: 767,
-			settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1,
-				arrows: false,
-			}
-		},
-		{
-			breakpoint: 575,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				autoplay: true,
-				arrows: false,
-			}
-		},
-	]
-});
-
-
-/*=============================================
-	=    		Portfolio Active		      =
-=============================================*/
-$('.portfolio__active').slick({
-	dots: false,
-	infinite: true,
-	speed: 1000,
-	autoplay: false,
-	arrows: true,
-	slidesToShow: 1,
-	slidesToScroll: 1,
-	prevArrow: '<button class="slick-prev"><i class="far fa-long-arrow-alt-left"></i></button>',
-	nextArrow: '<button class="slick-next"><i class="far fa-long-arrow-alt-right"></i></button>',
-	responsive: [
-		{
-			breakpoint: 1200,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				infinite: true,
-			}
-		},
-		{
-			breakpoint: 992,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				arrows: false,
-			}
-		},
-		{
-			breakpoint: 767,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				arrows: false,
-			}
-		},
-		{
-			breakpoint: 575,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				arrows: false,
-			}
-		},
-	]
-});
-$('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
-	$('.portfolio__active').slick('refresh');
-})
-
-
-/*=============================================
-	=         Testimonial Active          =
-=============================================*/
-$('.testimonial__active').slick({
-	dots: false,
-	infinite: true,
-	speed: 1000,
-	autoplay: false,
-	arrows: true,
-	slidesToShow: 1,
-	slidesToScroll: 1,
-	prevArrow: '<button class="slick-prev"><i class="far fa-long-arrow-left"></i></button>',
-	nextArrow: '<button class="slick-next"><i class="far fa-long-arrow-right"></i></button>',
-	appendArrows: ".testimonial__arrow",
-	responsive: [
-		{
-			breakpoint: 1200,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				infinite: true,
-			}
-		},
-		{
-			breakpoint: 992,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1
-			}
-		},
-		{
-			breakpoint: 767,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-			}
-		},
-		{
-			breakpoint: 575,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-			}
-		},
-	]
-});
-
-
-/*=============================================
-	=         Testimonial Active          =
-=============================================*/
-$('.testimonial__two__active').slick({
-	dots: false,
-	infinite: true,
-	speed: 1000,
-	autoplay: false,
-	arrows: true,
-	fade: true,
-	slidesToShow: 1,
-	slidesToScroll: 1,
-	prevArrow: '<button class="slick-prev"><i class="far fa-long-arrow-left"></i></button>',
-	nextArrow: '<button class="slick-next"><i class="far fa-long-arrow-right"></i></button>',
-	appendArrows: ".testimonial__arrow",
-	responsive: [
-		{
-			breakpoint: 1200,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				infinite: true,
-			}
-		},
-		{
-			breakpoint: 992,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1
-			}
-		},
-		{
-			breakpoint: 767,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-			}
-		},
-		{
-			breakpoint: 575,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-			}
-		},
-	]
-});
-
-
-/*=============================================
-	=    		Magnific Popup		      =
-=============================================*/
-$('.popup-image').magnificPopup({
-	type: 'image',
-	gallery: {
-		enabled: true
-	}
-});
-
-/* magnificPopup video view */
-$('.popup-video').magnificPopup({
-	type: 'iframe'
-});
-
-
-/*=============================================
-	=    		Isotope	Active  	      =
-=============================================*/
-$('.portfolio__inner__active').imagesLoaded(function () {
-	// init Isotope
-	var $grid = $('.portfolio__inner__active').isotope({
-		itemSelector: '.grid-item',
-		percentPosition: true,
-		transitionDuration: '0.6s',
-		masonry: {
-			columnWidth: 1,
-		}
-	});
-	// filter items on button click
-	$('.portfolio__inner__nav').on('click', 'button', function () {
-		var filterValue = $(this).attr('data-filter');
-		$grid.isotope({ filter: filterValue });
-	});
-
-});
-//for menu active class
-$('.portfolio__inner__nav button').on('click', function (event) {
-	$(this).siblings('.active').removeClass('active');
-	$(this).addClass('active');
-	event.preventDefault();
-});
-
-
-/*=============================================
-	=    		 Wow Active  	         =
-=============================================*/
-function wowAnimation() {
-	var wow = new WOW({
-		boxClass: 'wow',
-		animateClass: 'animated',
-		offset: 0,
-		mobile: false,
-		live: true
-	});
-	wow.init();
-}
-
-
-})(jQuery);
-
 (function() {
   "use strict";
 
@@ -588,17 +175,16 @@ function wowAnimation() {
   /**
    * Initiate TinyMCE Editor
    */
-  const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
+
+  var useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   tinymce.init({
     selector: 'textarea.tinymce-editor',
-    plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons',
-    editimage_cors_hosts: ['picsum.photos'],
+    plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+    imagetools_cors_hosts: ['picsum.photos'],
     menubar: 'file edit view insert format tools table help',
-    toolbar: 'undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+    toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
     toolbar_sticky: true,
-    toolbar_sticky_offset: isSmallScreen ? 102 : 108,
     autosave_ask_before_unload: true,
     autosave_interval: '30s',
     autosave_prefix: '{path}{query}-{id}-',
@@ -633,7 +219,7 @@ function wowAnimation() {
       }
     ],
     importcss_append: true,
-    file_picker_callback: (callback, value, meta) => {
+    file_picker_callback: function(callback, value, meta) {
       /* Provide file and text for the link dialog */
       if (meta.filetype === 'file') {
         callback('https://www.google.com/logos/google.jpg', {
@@ -669,7 +255,7 @@ function wowAnimation() {
       {
         title: 'New list with dates',
         description: 'New List with dates',
-        content: '<div class="mceTmpl"><span class="cdate">cdate</span><br><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>'
+        content: '<div class="mceTmpl"><span class="cdate">cdate</span><br /><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>'
       }
     ],
     template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
@@ -677,12 +263,12 @@ function wowAnimation() {
     height: 600,
     image_caption: true,
     quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
-    noneditable_class: 'mceNonEditable',
+    noneditable_noneditable_class: 'mceNonEditable',
     toolbar_mode: 'sliding',
-    contextmenu: 'link image table',
+    contextmenu: 'link image imagetools table',
     skin: useDarkMode ? 'oxide-dark' : 'oxide',
     content_css: useDarkMode ? 'dark' : 'default',
-    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
+    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
   });
 
   /**

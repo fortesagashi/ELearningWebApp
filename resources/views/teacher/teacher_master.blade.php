@@ -1,45 +1,42 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
-    <head>
+   <head>
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <title>"Xheladin Deda"</title>
+      <meta name="robots" content="noindex, nofollow">
+      <meta content="" name="description">
+      <meta content="" name="keywords">
+      <link href="{{ asset('frontend/assets/img/favicon.png')}}" rel="shortcut icon">
+      <link href="{{ asset('frontend/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+      <link href="https://fonts.gstatic.com" rel="preconnect">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      <link href="{{ asset('frontend/assets/css/bootstrap.min.css')}}" rel="stylesheet">
+      <link href="{{ asset('frontend/assets/css/bootstrap.css')}}" rel="stylesheet">
+      <link href="{{ asset('frontend/assets/css/bootstrap-icons.css')}}" rel="stylesheet">
+      <link href="{{ asset('frontend/assets/css/boxicons.min.css')}}" rel="stylesheet">
+      <link href="{{ asset('frontend/assets/css/quill.snow.css')}}" rel="stylesheet">
+      <link href="{{ asset('frontend/assets/css/quill.bubble.css')}}" rel="stylesheet">
+      <link href="{{ asset('frontend/assets/css/remixicon.css')}}" rel="stylesheet">
+      <link href="{{ asset('frontend/assets/css/simple-datatables.css')}}" rel="stylesheet">
+      <link href="{{ asset('frontend/assets/css/style.css')}}" rel="stylesheet">
+      <link href="{{ asset('frontend/assets/css/app.css')}}" rel="stylesheet">
+   </head>
+   <body>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+        <script src="{{ asset('frontend/assets/js/apexcharts.min.js')}}"></script>
+        <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{ asset('frontend/assets/js/chart.min.js')}}"></script>
+        <script src="{{ asset('frontend/assets/js/echarts.min.js')}}"></script>
+        <script src="{{ asset('frontend/assets/js/quill.min.js')}}"></script>
+        <script src="{{ asset('frontend/assets/js/simple-datatables.js')}}"></script>
+        <script src="{{ asset('frontend/assets/js/tinymce.min.js')}}"></script>
+        <script src="{{ asset('frontend/assets/js/validate.js')}}"></script>
+        <script src="{{ asset('frontend/assets/js/main.js')}}"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-        <meta charset="utf-8" />
-        <title>Qendra Burimore për Mësim dhe Këshillim "Xheladin Deda"</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="Themesdesign" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('backend/assets/images/logo-light.png')}}">
-
-        <!-- jquery.vectormap css -->
-        <link href="{{ asset('backend/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css" />
-
-        <!-- DataTables -->
-        <link href="{{ asset('backend/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
-
-        <!-- Responsive datatable examples -->
-        <link href="{{ asset('backend/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
-
-        <!-- Bootstrap Css -->
-        <link href="{{ asset('backend/assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-        <!-- Icons Css -->
-        <link href="{{ asset('backend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-        <!-- App Css-->
-        <link href="{{ asset('backend/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
-        <!-- Toastr Css -->
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
-
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" >
-
-    </head>
-
-    <body data-topbar="dark">
-
-    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
-
-        <!-- Begin page -->
-        <div id="layout-wrapper">
+        <div>
 
 
             @include('teacher.body.header')
@@ -53,97 +50,22 @@
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
-            <div class="main-content">
+
+            <main id="main" class="main">
+            <div class="page-content" style="padding:20px; min-height:505px;">
                 @yield('teacher')
                 <!-- End Page-content -->
-
+                @yield('teacher_chapter_content')
+                @yield('teacher_index')
+                @yield('teacher_profile_edit')
+                @yield('teacher_profile_view')
+                </div>
                 @include('teacher.body.footer')
 
-            </div>
+
+</main>
             <!-- end main content-->
 
         </div>
-        <!-- END layout-wrapper -->
-
-
-
-        <!-- Right bar overlay-->
-        <div class="rightbar-overlay"></div>
-
-        <!-- JAVASCRIPT -->
-        <script src="{{ asset('backend/assets/libs/jquery/jquery.min.js')}}"></script>
-        <script src="{{ asset('backend/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{ asset('backend/assets/libs/metismenu/metisMenu.min.js')}}"></script>
-        <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js')}}"></script>
-        <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js')}}"></script>
-
-
-        <!-- apexcharts -->
-        <script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js')}}"></script>
-
-        <!-- jquery.vectormap map -->
-        <script src="{{ asset('backend/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
-        <script src="{{ asset('backend/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js')}}"></script>
-
-        <!-- Required datatable js -->
-        <script src="{{ asset('backend/assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-        <script src="{{ asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-
-        <!-- Responsive examples -->
-        <script src="{{ asset('backend/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-        <script src="{{ asset('backend/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
-
-        <script src="{{ asset('backend/assets/js/pages/dashboard.init.js')}}"></script>
-
-        <!-- App js -->
-        <script src="{{ asset('backend/assets/js/app.js')}}"></script>
-
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-        <script>
-        @if(Session::has('message'))
-        var type = "{{ Session::get('alert-type','info') }}"
-        switch(type){
-            case 'info':
-            toastr.info(" {{ Session::get('message') }} ");
-            break;
-
-            case 'success':
-            toastr.success(" {{ Session::get('message') }} ");
-            break;
-
-            case 'warning':
-            toastr.warning(" {{ Session::get('message') }} ");
-            break;
-
-            case 'error':
-            toastr.error(" {{ Session::get('message') }} ");
-            break;
-        }
-        @endif
-        </script>
-
-        <!--tinymce js-->
-        <script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }} "></script>
-
-        <!-- init js -->
-        <script src="{{ asset('backend/assets/js/pages/form-editor.init.js') }} "></script>
-
-        <!-- Required datatable js -->
-        <script src="{{asset('backend/assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-        <script src="{{asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-
-        <!-- Datatable init js -->
-        <script src="{{asset('backend/assets/js/pages/datatables.init.js')}}"></script>
-
-
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-        <script src="{{ asset('backend/assets/js/code.js') }}"></script>
-
-        <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
-
-        <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js" ></script>
-
-    </body>
+   </body>
 </html>

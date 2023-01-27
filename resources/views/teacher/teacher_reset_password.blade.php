@@ -12,7 +12,7 @@
         @if(Session::has('error'))
         <strong> {{ session::get('error') }}</strong>
         @endif
-        <form method="POST" action="{{ route('teacher.login') }}">
+        <form method="POST" action="{{ route('student.login') }}">
             @csrf
 
             <!-- Email Address -->

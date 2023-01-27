@@ -1,8 +1,8 @@
 @extends('teacher.teacher_master')
-@section('teacher')
+@section('teacher_profile_edit')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<div class="page-content">
+<div class="page-content" style="padding-top:10px">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -50,7 +50,6 @@
         </div>
     </div>
 </div>
-
 <script type="text/javascript">
 
     $(document).ready(function(){

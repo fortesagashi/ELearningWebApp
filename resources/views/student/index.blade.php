@@ -5,7 +5,6 @@
     <strong> {{ session::get('error') }}</strong>
 @endif
 
-<main id="main" class="main">
     <div class="pagetitle">
             <h1><a href="#">Lëndët</a></h1>
             <nav>
@@ -21,7 +20,7 @@
 
               </div>
           </div>
-</main>
+
 
 @endsection
 

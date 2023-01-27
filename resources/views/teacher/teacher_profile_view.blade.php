@@ -1,26 +1,29 @@
 @extends('teacher.teacher_master')
-@section('teacher')
+@section('teacher_profile_view')
 
-<div class="page-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="card"><br><br>
-                    <center>
-                    <img class="rounded-circle avatar-xl" src="{{ (!empty($teacherData->photo))? url('upload/teacher_images/'.$teacherData->photo):url('upload/no_image.png')}}" alt="Card image cap">
-                    </center>
-                    <div class="card-body">
-                        <h4 class="card-title">Emri : {{$teacherData->name}}</h4>
+            <div class="col-lg-12">
+            <div class="card">
+                <br><br>
+                <center>
+                     <img src="{{ (!empty($teacherData->photo))? url('upload/teacher_images/'.$teacherData->photo):url('upload/no_image.png')}}" alt="Fotoja e profilit" class="rounded-circle avatar-xl">
+                </center>
+                     <div class="card-body">
+
+                        <p class="card-text">Emri : {{$teacherData->name}}</p>
                         <hr>
-                        <h4 class="card-title">Emaili : {{$teacherData->email}}</h4>
+                        <p class="card-text">Emaili : {{$teacherData->email}}</p>
                         <hr>
-                        <h4 class="card-title">Emri i përdoruesit : {{$teacherData->username}}</h4>
+                        <p class="card-text">Emri i përdoruesit : {{$teacherData->username}}</p>
                         <hr>
                         <a href="{{route('teacher.edit.profile')}}" class="btn btn-info btn-rounded waves-effect waves-light">Ndrysho të dhënat</a>
-                    </div>
-                </div>
+                   </div>
+            </div>
             </div>
         </div>
     </div>
-</div>
+
+
+
 @endsection
