@@ -1,7 +1,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <header id="header" class="header fixed-top d-flex align-items-center">
         <div class="d-flex align-items-center justify-content-between"> <a href="index.html" class="logo d-flex align-items-center">
-        <img src="{{ asset('student/assets/img/favicon.png')}}" alt=""> <span class="d-none d-lg-block">"Xheladin Deda"</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
+        <img src="{{ asset('frontend/assets/img/favicon.png')}}" alt=""> <span class="d-none d-lg-block">"Xheladin Deda"</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
         @php
             $id = Auth::guard('student')->user()->id;
             $studentData = App\Models\Student::find($id);

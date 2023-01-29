@@ -14,7 +14,7 @@ class AdminController extends Controller
     }//end method
 
     public function Dashboard(){
-        return view('admin.index');
+        return view('admin.admin_index');
     }//end method
 
     public function Login(Request $request){
@@ -71,5 +71,31 @@ class AdminController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('admin.profile')->with($notification);
+    }//end method
+
+    public function ChangePassword(){
+        return view('admin.admin_change_password');
+    }//end method
+
+    public function UpdatePassword(Request $request){
+        $validateData = $request->validate([
+            'oldpassword' => 'required',
+            'newpassword' => 'required',
+            'confirm_password' => 'required|same:newpassword'
+        ]);
+
+        $hashedPassword = Auth::guard('admin')->user()->password;
+        if (Hash::check($request->oldpassword, $hashedPassword)) {
+            $id = Auth::guard('admin')->user()->id;
+            $users = Admin::find($id);
+            $users->password = bcrypt($request->newpassword);
+            $users->save();
+
+            session()->flash('message', 'Fjalëkalimi u ndryshua me sukses');
+            return redirect()->back();
+        } else {
+            session()->flash('message', 'Fjalëkalimi i vjetër nuk është i saktë');
+            return redirect()->back();
+        }
     }//end method
 }

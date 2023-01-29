@@ -4,11 +4,11 @@
 <div class="page-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="card"><br><br>
                     <center>
-                    <img class="rounded-circle avatar-xl" src="{{ (!empty($adminData->photo))? url('upload/admin_images/'.$adminData->photo):url('upload/no_image.png')}}" alt="Card image cap">
-                    </center>
+                    <img id="showImage" class="rounded avatar-lg" src="{{ (!empty($adminData->photo))? url('upload/admin_images/'.$adminData->photo):url('upload/no_image.png')}}" alt="Card image cap">
+                                </center>
                     <div class="card-body">
                         <h4 class="card-title">Emri : {{$adminData->name}}</h4>
                         <hr>

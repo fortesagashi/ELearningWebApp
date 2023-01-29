@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -15,10 +14,6 @@
         <!-- jquery.vectormap css -->
         <link href="{{ asset('backend/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css" />
 
-        <!-- Google Fonts -->
-        <link href="https://fonts.gstatic.com" rel="preconnect">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
         <!-- DataTables -->
         <link href="{{ asset('backend/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 
@@ -27,13 +22,6 @@
 
         <!-- Bootstrap Css -->
         <link href="{{ asset('backend/assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('backend/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-        <link href="{{ asset('backend/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-        <link href="{{ asset('backend/vendor/quill/quill.snow.css')}}" rel="stylesheet">
-        <link href="{{ asset('backend/vendor/quill/quill.bubble.css')}}" rel="stylesheet">
-        <link href="{{ asset('backend/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
-        <link href="{{ asset('backend/vendor/simple-datatables/style.css')}}" rel="stylesheet">
-
         <!-- Icons Css -->
         <link href="{{ asset('backend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->

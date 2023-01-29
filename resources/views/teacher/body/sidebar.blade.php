@@ -1,7 +1,7 @@
 <main id="main" class="main">
 <aside id="sidebar" class="sidebar">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="{{ asset('student/assets/js/main.js')}}"></script>
+<script src="{{ asset('frontend/assets/js/main.js')}}"></script>
         <ul class="sidebar-nav" id="sidebar-nav">
 
             @php
@@ -61,11 +61,26 @@
 
                 @endphp
                 @foreach ($chapters as $chapter)
-                    <li> <a href="{{ route('teacher.content.dashboard', ['id' => $chapter->chapter_id, 'subjectID' => $subjectID]) }}" id="{{$chapter->chapter_id}}">
+                <li> <a href="{{ route('teacher.content.dashboard', ['id' => $chapter->chapter_id, 'subjectID' => $subjectID]) }}" id="{{$chapter->chapter_id}}">
+
 
                          <i class="bi bi-circle"></i>
                         <span>{{$chapter->chapter_name}}</span>
                     </a></li>
+                    <script>
+                    let navbarlinks = document.querySelectorAll('.nav-content a.active')
+                    const setActiveClass = () => {
+                        navbarlinks.forEach(navbarlink => {
+                        if (navbarlink.id == $chapter->chapter_id) {
+                            navbarlink.classList.add('active');
+                        } else {
+                            navbarlink.classList.remove('active');
+                        }
+                        });
+                    }
+                    window.addEventListener('load', setActiveClass)
+                    </script>
+
                 @endforeach
                 </ul>
             </a>
@@ -104,3 +119,4 @@
   });
 
 </script>
+

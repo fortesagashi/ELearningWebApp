@@ -26,11 +26,11 @@ Route::prefix('admin')->group(function (){
 //middleware('admin) helps not to access /dashboard page without logging in
     Route::get('/dashboard', [AdminController::class, 'Dashboard'])->name('admin.dashboard')->middleware('admin');
     Route::get('/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
-    Route::get('/admin/profile', [AdminController::class,'Profile'])->name('admin.profile');
-    Route::get('/edit/profile', [AdminController::class,'EditProfile'])->name('edit.profile');
-    Route::post('/store/profile', [AdminController::class,'StoreProfile'])->name('store.profile');
-    Route::get('/change/password',  [AdminController::class,'ChangePassword'])->name('change.password');
-    Route::post('/update/password',  [AdminController::class,'UpdatePassword'])->name('update.password');
+    Route::get('/admin/profile', [AdminController::class,'Profile'])->name('admin.profile')->middleware('admin');
+    Route::get('/edit/profile', [AdminController::class,'EditProfile'])->name('edit.profile')->middleware('admin');
+    Route::post('/store/profile', [AdminController::class,'StoreProfile'])->name('store.profile')->middleware('admin');
+    Route::get('/change/password',  [AdminController::class,'ChangePassword'])->name('admin.change.password')->middleware('admin');
+    Route::post('/update/password',  [AdminController::class,'UpdatePassword'])->name('admin.update.password')->middleware('admin');
 });
 //End Admin Route
 // Route::prefix('dropdown')->group(function (){
@@ -71,6 +71,38 @@ Route::prefix('student')->group(function (){
     Route::post('/dashboard/updatechapter/{id}/{subjectID}', [BookController::class, 'UpdateChapter'])->name('update.chapter')->middleware('student');
 });
 //End Student Route
+
+
+//Subjects All Route
+Route::controller(SubjectsController::class)->group(function (){
+    Route::get('/all/subjects', 'AllSubjects')->name('all.subjects')->middleware('admin');
+    Route::get('/add/subjects', 'AddSubjects')->name('add.subjects')->middleware('admin');
+    Route::post('/store/subjects', 'StoreSubjects')->name('store.subjects')->middleware('admin');
+    Route::get('/edit/subjects/{id}', 'EditSubjects')->name('edit.subjects')->middleware('admin');
+    Route::post('/update/subjects', 'UpdateSubjects')->name('update.subjects')->middleware('admin');
+    Route::get('/delete/subjects/{id}', 'DeleteSubjects')->name('delete.subjects')->middleware('admin');
+});
+
+//Books All Route
+Route::controller(BookController::class)->group(function (){
+    Route::get('/all/books', 'AllBooks')->name('all.books')->middleware('admin');
+    Route::get('/add/books', 'AddBooks')->name('add.books')->middleware('admin');
+    Route::post('/store/books', 'StoreBooks')->name('store.books')->middleware('admin');
+    Route::get('/edit/books/{id}', 'EditBooks')->name('edit.books')->middleware('admin');
+    Route::post('/update/books', 'UpdateBooks')->name('update.books')->middleware('admin');
+    Route::get('/delete/books/{id}', 'DeleteBooks')->name('delete.books')->middleware('admin');
+});
+
+//Students All Route
+Route::controller(StudentController::class)->group(function (){
+    Route::get('/all/students', 'AllStudents')->name('all.students')->middleware('admin');
+    Route::get('/add/students', 'AddStudents')->name('add.students')->middleware('admin');
+    Route::post('/store/students', 'StoreStudents')->name('store.students')->middleware('admin');
+    Route::get('/edit/students/{id}', 'EditStudents')->name('edit.students')->middleware('admin');
+    Route::post('/update/students', 'UpdateStudents')->name('update.students')->middleware('admin');
+    Route::get('/delete/students/{id}', 'DeleteStudents')->name('delete.students')->middleware('admin');
+});
+
 
 Route::get('/', function () {
     return view('student.student_login');

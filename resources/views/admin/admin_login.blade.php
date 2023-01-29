@@ -9,7 +9,7 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
         <!-- App favicon -->
-        <link rel="icon" type="image/x-icon" href="{{ asset('backend/assets/images/logo-light.png')}}">
+        <link rel="shortcut icon" href="{{ asset('backend/assets/images/logo-dark.png')}}">
 
         <!-- Bootstrap Css -->
         <link href="{{ asset('backend/assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -32,7 +32,8 @@
                         <div class="text-center mt-4">
                             <div class="mb-3">
                                 <a href="index.html" class="auth-logo">
-                                    <img src="{{ asset('backend/assets/images/logo-dark.png')}}" height="70" class="logo-dark mx-auto" alt="">
+                                    <img src="{{ asset('backend/assets/images/logo-dark.png')}}" height="50" class="logo-dark mx-auto" alt="">
+                                    <img src="{{ asset('backend/assets/images/logo-light.png')}}" height="30" class="logo-light mx-auto" alt="">
                                 </a>
                             </div>
                         </div>
@@ -42,14 +43,16 @@
                             <form method="POST" id="myForm" class="form-horizontal mt-3" action="{{ route('admin.login') }}">
                             @csrf
 
-                                <h5 class="text-muted text-center font-size-18">Qendra Burimore për Mësim dhe Këshillim “Xheladin Deda”</h5><br>
+                                <!---<h5 style="font-weight:bolder;">Qendra Burimore për Mësim dhe Këshillim “Xheladin Deda”</h5>--->
                                 <div class="form-group mb-3 row">
+                                <a href="#" style="text-align:center" class="text-muted text-center font-size-14" ><b>Ju lutem shtypni butonin TAB dhe pasi te dëgjoni fjalën "ID", shkruani ID-në tuaj dhe klikoni sërish TAB!</b></a>
 
                                     <div class="col-12">
-                                        <input class="form-control" id="email" type="text" name="email" required="" placeholder="Email">
+                                        <input class="form-control" onfocus="" id="email" type="text" name="email" required="" placeholder="ID">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3 row">
+                                <a  class="text-muted text-center font-size-14" style="text-align:center" href="#"><b>Shtypni butonin TAB dhe pasi te dëgjoni fjalën "Fjalëkalimi", shkruani fjalëkalimin tuaj dhe klikoni butonin ENTER!</b></a>
                                 <br>
                                 <div class="col-12">
                                         <input class="form-control form-control:focus" id="password" type="password" name="password" required="" placeholder="Fjalëkalimi">
@@ -64,15 +67,18 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group mb-1 text-center row mt-1 pt-1">
+                                <div class="form-group mb-3 text-center row mt-3 pt-1">
                                     <div class="col-12">
                                         <button class="btn btn-info w-100 waves-effect waves-light" type="submit">Kyçu</button>
                                     </div>
                                 </div>
 
-                                <div class="form-group mb-1 text-center row mt-1 pt-1">
-                                    <div class="col-12">
-                                        <a href="{{ route('password.request') }}" class="btn btn-info w-100 waves-effect waves-light">Ndrysho fjalëkalimin</a>
+                                <div class="form-group mb-0 row mt-2">
+                                    <div class="col-sm-7 mt-3">
+                                        <a href="{{ route('password.request') }}" class="text-muted"><i class="mdi mdi-account-circle"></i> Kyçu mësues</a>
+                                    </div>
+                                    <div class="col-sm-5 mt-3">
+                                        <a href="{{ route('register') }}" class="text-muted"><i class="mdi mdi-account-circle"></i> Kyçu administrator</a>
                                     </div>
                                 </div>
                             </form>
@@ -119,6 +125,9 @@
         }
         @endif
         </script>
+        <script>
 
+
+        </script>
     </body>
 </html>

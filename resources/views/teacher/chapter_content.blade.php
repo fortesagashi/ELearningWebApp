@@ -6,7 +6,7 @@
 @endif
 
     <div class="pagetitle">
-            <h1><a href="#">{{$name}}</a></h1>
+            <h1>{{$name}}</h1>
             <nav>
                <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="#">Kapitulli {{$chapterData->chapter_number}} </a></li>

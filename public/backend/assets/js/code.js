@@ -5,19 +5,20 @@ $(function(){
 
 
                   Swal.fire({
-                    title: 'Are you sure?',
-                    text: "Delete This Data?",
+                    title: 'A jeni të sigurtë?',
+                    text: "Dëshironi ti fshini këto të dhëna?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Po',
+                    cancelButtonText: 'Jo'
                   }).then((result) => {
                     if (result.isConfirmed) {
                       window.location.href = link
                       Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
+                        'Të dhënat u fshinë!',
+                        'Të dhënat u fshinë me sukses.',
                         'success'
                       )
                     }
