@@ -93,6 +93,16 @@ Route::controller(BookController::class)->group(function (){
     Route::get('/delete/books/{id}', 'DeleteBooks')->name('delete.books')->middleware('admin');
 });
 
+//Chapters All Route
+Route::controller(ChapterController::class)->group(function (){
+    Route::get('/all/chapters', 'AllChapters')->name('all.chapters')->middleware('admin');
+    Route::get('/add/chapters', 'AddChapters')->name('add.chapters')->middleware('admin');
+    Route::post('/store/chapters', 'StoreChapters')->name('store.chapters')->middleware('admin');
+    Route::get('/edit/chapters/{id}', 'EditChapters')->name('edit.chapters')->middleware('admin');
+    Route::post('/update/chapters', 'UpdateChapters')->name('update.chapters')->middleware('admin');
+    Route::get('/delete/chapters/{id}', 'DeleteChapters')->name('delete.chapters')->middleware('admin');
+});
+
 //Students All Route
 Route::controller(StudentController::class)->group(function (){
     Route::get('/all/students', 'AllStudents')->name('all.students')->middleware('admin');
@@ -102,6 +112,26 @@ Route::controller(StudentController::class)->group(function (){
     Route::post('/update/students', 'UpdateStudents')->name('update.students')->middleware('admin');
     Route::get('/delete/students/{id}', 'DeleteStudents')->name('delete.students')->middleware('admin');
 });
+
+//Teachers All Route
+Route::controller(TeacherController::class)->group(function (){
+    Route::get('/all/teachers', 'AllTeachers')->name('all.teachers')->middleware('admin');
+    Route::get('/add/teachers', 'AddTeachers')->name('add.teachers')->middleware('admin');
+    Route::post('/store/teachers', 'StoreTeachers')->name('store.teachers')->middleware('admin');
+    Route::get('/edit/teachers/{id}', 'EditTeachers')->name('edit.teachers')->middleware('admin');
+    Route::post('/update/teachers', 'UpdateTeachers')->name('update.teachers')->middleware('admin');
+    Route::get('/delete/teachers/{id}', 'DeleteTeachers')->name('delete.teachers')->middleware('admin');
+    //teachers_subjects data
+    Route::get('/all/teachers_subjects/{id}', 'AllTeachersSubjects')->name('all.teachers_subjects')->middleware('admin');
+    Route::get('/add/teachers_subjects/{id}', 'AddTeachersSubjects')->name('add.teachers_subjects')->middleware('admin');
+    Route::post('/store/teachers_subjects/{id}', 'StoreTeachersSubjects')->name('store.teachers_subjects')->middleware('admin');
+    Route::get('/edit/teachers_subjects/{subject_id}/{teacher_id}', 'EditTeachersSubjects')->name('edit.teachers_subjects')->middleware('admin');
+    Route::post('/update/teachers_subjects', 'UpdateTeachersSubjects')->name('update.teachers_subjects')->middleware('admin');
+    Route::get('/delete/teachers_subjects/{subject_id}/{teacher_id}', 'DeleteTeachersSubjects')->name('delete.teachers_subjects')->middleware('admin');
+
+});
+
+
 
 
 Route::get('/', function () {

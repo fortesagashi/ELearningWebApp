@@ -78,8 +78,9 @@ class StudentController extends Controller
 
 
 
-    public function AllStudents(){
-        $student = Student::get();
+    public function AllStudents(Request $request){
+        $study_year = $request->query('study_year');
+        $student = Student::where('study_year', $study_year)->get();
         return view('admin.students.students_all',compact('student'));
     }//end method
 
@@ -168,7 +169,7 @@ class StudentController extends Controller
             Image::make($image)->resize(1020,519)->save('upload/student_images/'.$name_gen);
             $save_url = $name_gen;
 
-            Student::findOrFail($student_id)->update([
+            Student::where('id', $student_id)->update([
                 'name' => $request->name,
                 'lastname' => $request->lastname,
                 'student_id' => $request->student_id,
@@ -193,7 +194,7 @@ class StudentController extends Controller
 
         } else{
 
-            Student::findOrFail($student_id)->update([
+            Student::where('id', $student_id)->update([
                 'name' => $request->name,
                 'lastname' => $request->lastname,
                 'student_id' => $request->student_id,

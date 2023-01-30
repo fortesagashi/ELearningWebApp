@@ -9,9 +9,10 @@
 <div class="col-12">
     <div class="card">
         <div class="card-body">
-
-            <h4 class="card-title">Shto nxënësin </h4>
-            <form method="post" action="{{ route('store.students') }}" enctype="multipart/form-data">
+</br>
+            <h4 class="card-title">Shto një mësimdhënës </h4>
+            </br>
+            <form method="post" action="{{ route('store.teachers') }}" enctype="multipart/form-data">
                 @csrf
 
 
@@ -37,16 +38,6 @@
             </div>
             <!-- end row -->
             <div class="row mb-3">
-                <label for="example-text-input" class="col-sm-2 col-form-label">ID e studentit</label>
-                <div class="col-sm-10">
-                    <input name="student_id" class="form-control" type="text" id="example-text-input">
-                    @error('student_id')
-                    <span class="text-danger"> {{ $message }} </span>
-                    @enderror
-                </div>
-            </div>
-            <!-- end row -->
-            <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">ID personale</label>
                 <div class="col-sm-10">
                     <input name="personal_id" class="form-control" type="text" id="example-text-input">
@@ -55,7 +46,6 @@
                     @enderror
                 </div>
             </div>
-            <!-- end row -->
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Datëlindja</label>
                 <div class="col-sm-10">
@@ -79,28 +69,8 @@
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Numri i telefonit</label>
                 <div class="col-sm-10">
-                    <input name="parent_phone_number" class="form-control" type="text" id="example-text-input">
-                    @error('parent_phone_number')
-                    <span class="text-danger"> {{ $message }} </span>
-                    @enderror
-                </div>
-            </div>
-            <!-- end row -->
-            <div class="row mb-3">
-                <label for="example-text-input" class="col-sm-2 col-form-label">Klasa</label>
-                <div class="col-sm-10">
-                    <input name="study_year" class="form-control" type="text" id="example-text-input">
-                    @error('study_year')
-                    <span class="text-danger"> {{ $message }} </span>
-                    @enderror
-                </div>
-            </div>
-            <!-- end row -->
-            <div class="row mb-3">
-                <label for="example-text-input" class="col-sm-2 col-form-label">Paralelja</label>
-                <div class="col-sm-10">
-                    <input name="class_identifier" class="form-control" type="text" id="example-text-input">
-                    @error('class_identifier')
+                    <input name="phone_number" class="form-control" type="text" id="example-text-input">
+                    @error('phone_number')
                     <span class="text-danger"> {{ $message }} </span>
                     @enderror
                 </div>
@@ -165,7 +135,7 @@
                 </div>
             </div>
             <!-- end row -->
-<input type="submit" class="btn btn-info waves-effect waves-light" value="Shto studentin">
+<input type="submit" class="btn btn-info waves-effect waves-light" value="Shto mësimdhënësin">
             </form>
         </div>
     </div>
