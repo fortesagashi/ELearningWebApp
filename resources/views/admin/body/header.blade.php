@@ -66,3 +66,18 @@
         </div>
     </div>
 </header>
+<script>
+  const button = document.getElementById("page-header-user-dropdown");
+
+button.addEventListener("click", function() {
+  const dropdown = button.nextElementSibling;
+  button.classList.toggle("show");
+  dropdown.classList.toggle("show");
+  if (button.getAttribute("aria-expanded") === "false") {
+    button.setAttribute("aria-expanded", "true");
+  } else {
+    button.setAttribute("aria-expanded", "false");
+  }
+});
+
+    </script>

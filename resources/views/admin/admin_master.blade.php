@@ -28,7 +28,7 @@
         <link href="{{ asset('backend/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
         <!-- Toastr Css -->
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
-
+        <link href="{{ asset('backend/assets/css/app.min.bootstrap-dark-rtl.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" >
 
     </head>
@@ -75,7 +75,7 @@
         <script src="{{ asset('backend/assets/libs/metismenu/metisMenu.min.js')}}"></script>
         <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js')}}"></script>
         <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js')}}"></script>
-
+        <script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }} "></script>
 
         <!-- apexcharts -->
         <script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js')}}"></script>

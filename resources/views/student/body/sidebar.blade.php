@@ -1,7 +1,7 @@
 <main id="main" class="main">
 <aside id="sidebar" class="sidebar">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="{{ asset('student/assets/js/main.js')}}"></script>
+<script src="{{ asset('frontend/assets/js/main.js')}}"></script>
         <ul class="sidebar-nav" id="sidebar-nav">
 
             @php
@@ -10,11 +10,11 @@
 
                 $subjects = App\Models\Subjects::join('students as st', function($join) use ($studentData) {
                     $join->on('subjects.study_year', '=', 'st.study_year');
-                })->get();
+                })->groupBy('subjects.subject_name')->get();
 
                 $subjectIds = App\Models\Subjects::join('students as st', function($join) use ($studentData) {
                     $join->on('subjects.study_year', '=', 'st.study_year');
-                })->pluck('subjects.id');
+                })->groupBy('subjects.subject_name')->pluck('subjects.id');
 
                 foreach($subjects as $index => $subject){
                     $name = $subject->subject_name;
