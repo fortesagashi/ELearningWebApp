@@ -53,6 +53,7 @@
 
             <main id="main" class="main">
             <div class="page-content" style="padding:20px; min-height:505px;">
+
                 @yield('student')
                 <!-- End Page-content -->
                 @yield('chapter_content')

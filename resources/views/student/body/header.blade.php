@@ -2,7 +2,44 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
         <div class="d-flex align-items-center justify-content-between"> <a href="index.html" class="logo d-flex align-items-center">
         <img src="{{ asset('frontend/assets/img/favicon.png')}}" alt=""> <span class="d-none d-lg-block">"Xheladin Deda"</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
-        @php
+
+        <input type="range" min="12" max="24" value="16" id="font-size-slider" style="margin-left:30px">
+            <script>
+                const slider = document.getElementById("font-size-slider");
+                slider.addEventListener("input", function() {
+                document.querySelectorAll("body, h1, h2, h3, h4, p, span, a").forEach(el => {
+                    el.style.fontSize = this.value + "px";
+                });
+                });
+
+            </script>
+            <input type="range" id="theme-slider">
+            <script>
+           const themeSlider = document.querySelector("#theme-slider");
+const textElements = document.querySelectorAll("body, h1, h2, h3, h4, p, span, a, li, ul");
+
+const colors = [  [255, 255, 255],
+  [229, 204, 255],
+  [204, 255, 229],
+  [255, 229, 204],
+  [204, 204, 255],
+];
+
+const updateTheme = value => {
+  const color = colors[value];
+  textElements.forEach(el => {
+    el.style.color = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+  });
+};
+
+themeSlider.addEventListener("input", e => {
+  updateTheme(e.target.value);
+});
+
+
+</script>
+
+            @php
             $id = Auth::guard('student')->user()->id;
             $studentData = App\Models\Student::find($id);
         @endphp
